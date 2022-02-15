@@ -68,11 +68,11 @@ button {
 
 .face {
   color: black;
+  transform: rotateY(180deg);
 }
 
 .back {
   background-color:whitesmoke;
-  transform: rotateY(180deg);
 }
 
 

@@ -1,8 +1,10 @@
-const cards = document.querySelectorAll('.cards')
+const card = document.querySelectorAll('.card-inner')
 
-card.forEach( el => {
-    el.addEventListener("click", function(){
-        el.classList.add('flip')
-    })
+
+function flip(e){
+    console.log(e.target);
+}
+
+    card.forEach ( cardInner => {
+    cardInner.addEventListener('click', flip);
 });
-
