@@ -1,10 +1,10 @@
-const card = document.querySelectorAll('.card-inner')
+let cards = document.getElementsByClassName('card');
 
-
-function flip(e){
-    console.log(e.target);
+for (i = 0; i < cards.length; i++) {
+    cards[i].addEventListener('click', flipCard);
 }
 
-    card.forEach ( cardInner => {
-    cardInner.addEventListener('click', flip);
-});
+function flipCard() {
+    cards.classList.toggle('flipCard');
+}
+

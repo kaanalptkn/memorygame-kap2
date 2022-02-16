@@ -75,5 +75,8 @@ button {
   background-color:whitesmoke;
 }
 
+.flipCard {
+  transform: rotateY(180deg);
+}
 
 
