@@ -1,10 +1,103 @@
-let cards = document.getElementsByClassName('card');
+// Choose game button is clickable, you can choose from there how hard would you like to play.
 
-for (i = 0; i < cards.length; i++) {
-    cards[i].addEventListener('click', flipCard);
+$('#button-card').click(function(){
+    $('#button-p').toggle('slow');
+});
+
+
+// add my gameboard inside of ply button
+
+const button = document.getElementById('btn-play-game');
+const board = document.getElementById('card-container');
+
+button.onclick = function () {
+    board.style.display = 'block';
+    button.style.display = 'none';
 }
+// flipping cards
+
+let flippedCard = false;
+let lockBoard = false;
+let cardOne, cardTwo;
 
 function flipCard() {
-    cards.classList.toggle('flipCard');
+    console.log(true)
+    if (lockBoard) return;
+    if (this === cardOne) return;
+
+    this.classList.add('flip');
+
+    if (!flippedCard) {
+        //first time clicked card
+
+        flippedCard = true;
+        cardOne = this;
+
+        return;
+    }
+    // second time clicked the cards
+    flippedCard = false;
+    cardTwo = this;
+
+    matchedCards(cardOne, cardTwo);
+
 }
+
+
+// Checked if is match and if it is not match
+
+function matchedCards(cardOne, cardTwo) {
+    console.log(cardOne.dataset.framework)
+    let isMatch = cardOne.dataset.framework === cardTwo.dataset.framework;
+
+    isMatch ? disableCards() : unmatchedCards();
+}
+
+function disableCards() {
+    cardOne.removeEventListener('click', flipCard);
+    cardTwo.removeEventListener('click', flipCard);
+
+    resetBoard();
+}
+
+function unmatchedCards() {
+    lockBoard = true;
+
+
+    setTimeout(() => {
+        cardOne.classList.remove('flip');
+        cardTwo.classList.remove('flip');
+
+        resetBoard();
+    }, 1200);
+}
+
+function resetBoard() {
+    flippedCard = false;
+    lockBoard = false;
+    cardOne = null;
+    cardTwo = null;
+}
+
+
+function shuffleCards() {
+    // step 1 - get all cards and the cards container
+    const cardsContainer = document.getElementById('cards-container');
+    let cardsArray = document.querySelectorAll('.card');
+
+    // step 2 - shuffle the cards
+    cardsArray = [...cardsArray].sort(() => (Math.random() > .5) ? 1 : -1);
+
+    // step 3 - empty the cards container
+    cardsContainer.innerHTML = '';
+
+    // step 4 - add the cards back into the dom
+    cardsArray.forEach(card => cardsContainer.innerHTML += `<div class="card" id="card">${card.innerHTML}</div>`);
+
+    // flip card listener
+    const cards = document.querySelectorAll('.card-inner');
+    cards.forEach(card => card.addEventListener('click', flipCard))
+
+}
+shuffleCards();
 

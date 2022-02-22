@@ -54,10 +54,6 @@ button {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
-.card:hover .card-inner {
-  transform: rotateY(180deg);
-}
-
 .face, .back {
   position: absolute;
   width: 100%;
@@ -75,8 +71,15 @@ button {
   background-color:whitesmoke;
 }
 
-.flipCard {
+.flip {
   transform: rotateY(180deg);
 }
 
 
+.card {
+  transform: rotateY(180deg);
+}
+
+#card-container {
+  display: none;
+}
