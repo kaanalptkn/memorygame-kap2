@@ -19,9 +19,10 @@ button.onclick = function () {
 let flippedCard = false;
 let lockBoard = false;
 let cardOne, cardTwo;
+let imageCardOne, imageCardTwo;
 
 function flipCard() {
-    console.log(true)
+    
     if (lockBoard) return;
     if (this === cardOne) return;
 
@@ -43,6 +44,8 @@ function flipCard() {
 
 }
 
+// When cards matched they will removed from main screen
+
 
 // Checked if is match and if it is not match
 
@@ -56,9 +59,29 @@ function matchedCards(cardOne, cardTwo) {
 function disableCards() {
     cardOne.removeEventListener('click', flipCard);
     cardTwo.removeEventListener('click', flipCard);
+    
+     
+    setTimeout(() => {
+        cardTwo.classList.add("hide");
+        cardOne.classList.add("hide");
 
-    resetBoard();
+        resetBoard();
+
+    }, 1200);
+
+    setTimeout(() => {
+        alert('Hey you got match!')
+
+        resetBoard();
+
+    }, 1200);
+
+    
+
 }
+
+
+
 
 function unmatchedCards() {
     lockBoard = true;
@@ -70,6 +93,7 @@ function unmatchedCards() {
 
         resetBoard();
     }, 1200);
+
 }
 
 function resetBoard() {
@@ -98,6 +122,8 @@ function shuffleCards() {
     const cards = document.querySelectorAll('.card-inner');
     cards.forEach(card => card.addEventListener('click', flipCard))
 
+}const init = () => {
+  shuffleCards();
 }
-shuffleCards();
+init()
 

@@ -7,8 +7,14 @@
 body {
   background-color: rgba(197, 228, 211, 0.952);
   min-height: 100vh;
+  padding: 2em;
+  text-align: -webkit-center;
 }
 
+h2 {
+    text-align: center;
+    color: rgb(126, 126, 126);
+}
 button {
   width: 120px;
   height: 30px;
@@ -20,9 +26,13 @@ button {
   letter-spacing: 1.5px;
 }
 
+p#button-p {
+  padding: 2rem;
+}
+
 
 .container {
-  height: 500px;
+  height: 460px;
   width: 550px;
   background: linear-gradient(to right, rgb(163, 192, 163), rgb(117, 143, 117));
   border-radius: 15px;
@@ -82,4 +92,19 @@ button {
 
 #card-container {
   display: none;
+}
+
+.hide {
+  display: none;
+}
+
+@media only screen and (max-width: 350px) {
+  body {
+    height: 100%;
+    width: 100%;
+  }
+
+  .container {
+    margin-right: 2rem;
+  }
 }
