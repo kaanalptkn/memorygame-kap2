@@ -3,11 +3,11 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+/* I added background color for all body element */
 body {
   background-color: rgba(197, 228, 211, 0.952);
   min-height: 100vh;
-  padding: 2em;
+  
   text-align: -webkit-center;
 }
 
@@ -30,17 +30,17 @@ p#button-p {
   padding: 2rem;
 }
 
-
+/* I added gameboard here, and put images nicely on this container, it seems more tidy like that, 
+I used grid system for display */
 .container {
-  height: 460px;
-  width: 550px;
+  height: 550px;
+  width: 450px;
   background: linear-gradient(to right, rgb(163, 192, 163), rgb(117, 143, 117));
   border-radius: 15px;
   padding: 30px;
   box-shadow: 1 1 5px;
   display: grid;
-  grid-template-columns: repeat(8, auto);
-  grid-template-rows: repeat(8, auto);
+  grid-template-columns: repeat(6, auto);
   grid-gap: 1rem;
   align-items: center;
   justify-content: center;
@@ -63,7 +63,7 @@ p#button-p {
   transform-style: preserve-3d;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
-
+/*I added postion absolute for "face" and "back" side of images and for ".card-inner" calss I added realiteve */
 .face, .back {
   position: absolute;
   width: 100%;
@@ -73,18 +73,13 @@ p#button-p {
 }
 
 .face {
-  color: black;
   transform: rotateY(180deg);
 }
 
-.back {
-  background-color:whitesmoke;
-}
-
+/*for flipping card*/
 .flip {
   transform: rotateY(180deg);
 }
-
 
 .card {
   transform: rotateY(180deg);
@@ -93,18 +88,18 @@ p#button-p {
 #card-container {
   display: none;
 }
-
+/*for remove cards when they match on gameboard*/
 .hide {
   display: none;
 }
-
-@media only screen and (max-width: 350px) {
+/* for other divices view*/
+@media (max-width: 768px) {
   body {
-    height: 100%;
     width: 100%;
   }
 
   .container {
-    margin-right: 2rem;
+   width: 100%;
+   grid-gap: 0;
   }
 }

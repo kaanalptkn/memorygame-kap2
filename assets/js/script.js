@@ -19,7 +19,7 @@ button.onclick = function () {
 let flippedCard = false;
 let lockBoard = false;
 let cardOne, cardTwo;
-let imageCardOne, imageCardTwo;
+let score = 0;
 
 function flipCard() {
     
@@ -44,43 +44,40 @@ function flipCard() {
 
 }
 
-// When cards matched they will removed from main screen
 
 
 // Checked if is match and if it is not match
+// When cards matched they will removed from main screen
+// setTimeOut helps firs shows both cards face befor removing from gameboard
 
 function matchedCards(cardOne, cardTwo) {
     console.log(cardOne.dataset.framework)
     let isMatch = cardOne.dataset.framework === cardTwo.dataset.framework;
 
     isMatch ? disableCards() : unmatchedCards();
+
+    score++;
 }
 
 function disableCards() {
+    score++;
+    console.log(score);
     cardOne.removeEventListener('click', flipCard);
     cardTwo.removeEventListener('click', flipCard);
-    
-     
     setTimeout(() => {
         cardTwo.classList.add("hide");
         cardOne.classList.add("hide");
-
         resetBoard();
-
     }, 1200);
-
     setTimeout(() => {
-        alert('Hey you got match!')
-
+        if (score === 16) {
+            alert("Congratulations! You Won!");
+        } else {
+            alert('Hey you got match!');
+        }
         resetBoard();
-
     }, 1200);
-
-    
-
 }
-
-
 
 
 function unmatchedCards() {
@@ -101,6 +98,7 @@ function resetBoard() {
     lockBoard = false;
     cardOne = null;
     cardTwo = null;
+   
 }
 
 
@@ -110,7 +108,7 @@ function shuffleCards() {
     let cardsArray = document.querySelectorAll('.card');
 
     // step 2 - shuffle the cards
-    cardsArray = [...cardsArray].sort(() => (Math.random() > .5) ? 1 : -1);
+    cardsArray = [...cardsArray].sort(() => (Math.random() > 0.5) ? 1 : -1);
 
     // step 3 - empty the cards container
     cardsContainer.innerHTML = '';
