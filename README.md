@@ -91,6 +91,7 @@ I used this website Balsamiq to create  wireframes.
 
 ![Wireframes](md_images/wireframe.png)
 
+# Surface
 
 ### Colors
 
@@ -147,7 +148,7 @@ ___
 
 ### JavaScript
 
-As a script language
+* As a script language
 
 ### Font Awesome
 
@@ -272,8 +273,7 @@ ___
 
 ### Content
 
-* This game created by myself
-
+* This game created by myself, all main idea is mine. 
 
 ### Media
 

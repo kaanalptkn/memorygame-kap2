@@ -16,7 +16,7 @@ const board = document.getElementById('card-container');
 button.onclick = function () {
     board.style.display = 'block';
     button.style.display = 'none';
-}
+};
 // flipping cards
 // I added lock the board and wait until the cards finish to flipping
 
@@ -146,6 +146,6 @@ function shuffleCards() {
 
 }const init = () => {
   shuffleCards();
-}
-init()
+};
+init();
 
