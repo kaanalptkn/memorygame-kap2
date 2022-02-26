@@ -1,11 +1,14 @@
-// Choose game button is clickable, you can choose from there how hard would you like to play.
+// How to play button is clickable, users can see what is the game rule,
+// from there they can see how to play. Used toggle here
 
 $('#button-card').click(function(){
     $('#button-p').toggle('slow');
 });
 
 
-// add my gameboard inside of ply button
+// I added the gameboard to the play button. 
+//When you press the play button, the game starts.
+// I used get element with id here and used onclick function.
 
 const button = document.getElementById('btn-play-game');
 const board = document.getElementById('card-container');
@@ -15,6 +18,7 @@ button.onclick = function () {
     button.style.display = 'none';
 }
 // flipping cards
+// I added lock the board and wait until the cards finish to flipping
 
 let flippedCard = false;
 let lockBoard = false;
@@ -46,9 +50,9 @@ function flipCard() {
 
 
 
-// Checked if is match and if it is not match
+// In this section checked if is match and if it is not match
 // When cards matched they will removed from main screen
-// setTimeOut helps firs shows both cards face befor removing from gameboard
+// setTimeOut helps for shows both cards face befor removing from gameboard
 
 function matchedCards(cardOne, cardTwo) {
     console.log(cardOne.dataset.framework)
@@ -56,22 +60,30 @@ function matchedCards(cardOne, cardTwo) {
 
     isMatch ? disableCards() : unmatchedCards();
 
-    score++;
 }
+
+// In this section, after the cards are matched, an alert (Hey you got match!) 
+//is displayed. then it disappears from the screen. A different alert(Congratulations! 
+//You are winner!) pops up when the last card is deleted from the screen.
+// I used score, remove event listener and hide. Also I set time out as well. 
+
 
 function disableCards() {
     score++;
     console.log(score);
+
     cardOne.removeEventListener('click', flipCard);
     cardTwo.removeEventListener('click', flipCard);
+
     setTimeout(() => {
         cardTwo.classList.add("hide");
         cardOne.classList.add("hide");
         resetBoard();
     }, 1200);
+
     setTimeout(() => {
-        if (score === 16) {
-            alert("Congratulations! You Won!");
+        if (score === 15) {
+            alert("Congratulations! You are winner!");
         } else {
             alert('Hey you got match!');
         }
@@ -79,6 +91,10 @@ function disableCards() {
     }, 1200);
 }
 
+
+
+// If cards are not match they are again flipping. I used here flip method
+// and I set time out.
 
 function unmatchedCards() {
     lockBoard = true;
@@ -93,6 +109,9 @@ function unmatchedCards() {
 
 }
 
+// I added reset board function for  after each flipping first and secdon card to know.
+// in this function I set the board.
+
 function resetBoard() {
     flippedCard = false;
     lockBoard = false;
@@ -101,22 +120,27 @@ function resetBoard() {
    
 }
 
+// Added get all cards and the cards container
+// Then shuffle the cards
+// empty the cards container
+// added the cards back into the dom
+// flip card listener
 
 function shuffleCards() {
-    // step 1 - get all cards and the cards container
+    
     const cardsContainer = document.getElementById('cards-container');
     let cardsArray = document.querySelectorAll('.card');
 
-    // step 2 - shuffle the cards
+    
     cardsArray = [...cardsArray].sort(() => (Math.random() > 0.5) ? 1 : -1);
 
-    // step 3 - empty the cards container
+    
     cardsContainer.innerHTML = '';
 
-    // step 4 - add the cards back into the dom
+    
     cardsArray.forEach(card => cardsContainer.innerHTML += `<div class="card" id="card">${card.innerHTML}</div>`);
 
-    // flip card listener
+    
     const cards = document.querySelectorAll('.card-inner');
     cards.forEach(card => card.addEventListener('click', flipCard))
 
