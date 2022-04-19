@@ -8,7 +8,7 @@ Website presents Magic Game as a memory game. Users will be able to play interes
 
 This project is for educational purposes and can not be used as a template for a business use. Main aim is to build responsive website with HTML, CSS, JavaScript. 
 
-## [View life website in github pages] (https://kaanalptkn.github.io/memorygame-kap2/)
+## [View life website in github pages](https://kaanalptkn.github.io/memorygame-kap2/)
 
 # Table of Contents
 
