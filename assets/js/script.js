@@ -91,6 +91,10 @@ function disableCards() {
     }, 1200);
 }
 
+function resetBoard() {
+    [flippedCard , lockBoard] = [false, false];
+    [cardOne, cardTwo] = [null, null];
+  }
 
 
 // If cards are not match they are again flipping. I used here flip method
