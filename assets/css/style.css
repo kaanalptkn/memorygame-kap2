@@ -14,7 +14,13 @@ body {
 h2 {
     text-align: center;
     color: rgb(126, 126, 126);
+    margin: 1em;
 }
+
+#result {
+  margin: 2em;
+}
+
 button {
   width: 120px;
   height: 30px;

@@ -1,9 +1,9 @@
 // How to play button is clickable, users can see what is the game rule,
 // from there they can see how to play. Used toggle here
 
-$('#button-card').click(function(){
-    $('#button-p').toggle('slow');
-});
+function show() {
+    document.getElementById('result').innerHTML= "Pick pairs of cards until all the cards have been removed from the screen and make a win!"
+}
 
 
 // I added the gameboard to the play button. 
